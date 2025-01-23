@@ -8,7 +8,20 @@ body {
   padding: 0;
 }
 
+/* Root Styles */
+:root{
+  /* Color Codes */
+  --off-black: #222222;
+  --off-white: #F9F9F9;
+}
+
 section,
 section > div {
   outline: 1px solid red;
+}
+
+/* Styles */
+body {
+  background-color: var(--off-black);
+  color: var(--off-white);
 }
