@@ -1,0 +1,14 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+}
+
+section,
+section > div {
+  outline: 1px solid red;
+}
