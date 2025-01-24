@@ -214,6 +214,7 @@ input[type=text] {
 
 #weather-current {
   height: 360px;
+  background: linear-gradient(#a8ddef, #fbfbca);
 }
 
 .day-outlook {
@@ -246,6 +247,7 @@ input[type=text] {
 
 #weather-soon div {
   outline: 1px solid red;
+  background: linear-gradient(#a8ddef, #fbfbca);
 
   display: flex;
   flex-direction: column;
