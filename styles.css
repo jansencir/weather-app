@@ -10,14 +10,11 @@ body {
 
 /* Root Styles */
 :root{
-  /* Color Codes */
   --off-black: #222222;
   --off-white: #FDFDFD;
-}
 
-section,
-section > div {
-  outline: 1px solid red;
+  --spacing-city-outer: 6%;
+  --spacing-city-inner: 2%;
 }
 
 /* Styles */
@@ -26,10 +23,20 @@ body {
   color: var(--off-white);
 }
 
-input {
+#control-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input,
+#unit-toggle-btn {
   background-color: var(--off-black);
   border: 1px solid var(--off-white);
   border-radius: 5px;
+}
+
+input {
   height: 30px;
   width: 250px;
   margin-top: 16px;
@@ -42,4 +49,42 @@ input[type=text] {
   background-position: left 2px center;
   padding-left: 24px;
   color: var(--off-white);
+}
+
+#unit-toggle-btn {
+  width: 90px;
+  margin-top: 8px;
+  color: var(--off-white);
+}
+
+#city-container {
+  display: flex;
+  width: 80%;
+  margin: 24px auto;
+}
+
+#city-container div {
+  flex-basis: 100%;
+  width: fit-content;
+}
+
+.large-text {
+  font-size: 2rem;
+}
+
+.city-left {
+  text-align: end;
+  padding-right: var(--spacing-city-outer);
+}
+
+.city-middle {
+  text-align: center;
+  padding: 0 var(--spacing-city-inner);
+  border-left: 1px solid var(--off-white);
+  border-right: 1px solid var(--off-white);
+}
+
+.city-right {
+  text-align: start;
+  padding-left: var(--spacing-city-outer);
 }
