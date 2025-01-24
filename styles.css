@@ -12,7 +12,7 @@ body {
 :root{
   /* Color Codes */
   --off-black: #222222;
-  --off-white: #F9F9F9;
+  --off-white: #FDFDFD;
 }
 
 section,
@@ -23,5 +23,23 @@ section > div {
 /* Styles */
 body {
   background-color: var(--off-black);
+  color: var(--off-white);
+}
+
+input {
+  background-color: var(--off-black);
+  border: 1px solid var(--off-white);
+  border-radius: 5px;
+  height: 30px;
+  width: 250px;
+  margin-top: 16px;
+}
+
+input[type=text] {
+  background-image: url(./magnify-white.svg);
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: left 2px center;
+  padding-left: 24px;
   color: var(--off-white);
 }
