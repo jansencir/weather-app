@@ -199,3 +199,57 @@ input[type=text] {
   text-align: start;
   padding-left: var(--spacing-city-outer);
 }
+
+#weather-container,
+#weather-current,
+#weather-soon {
+  outline: 1px solid red;
+}
+
+#weather-container {
+  margin: 48px 0;
+  color: var(--off-white);
+  text-shadow: 1px 1px 2px var(--off-black);
+}
+
+#weather-current {
+  height: 360px;
+}
+
+.day-outlook {
+  text-align: center;
+  padding-top: 28px;
+}
+
+#weather-report {
+  padding-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+#weather-report .left {
+  text-align: end;
+  padding-right: 32px;
+  border-right: 0.5px solid var(--off-white);
+}
+
+#weather-report .right {
+  text-align: start;
+  padding-left: 32px;
+  border-left: 0.5  px solid var(--off-white);
+}
+
+#weather-soon {
+  display: flex;
+  height: 100px;
+}
+
+#weather-soon div {
+  outline: 1px solid red;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+}
