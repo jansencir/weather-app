@@ -255,3 +255,7 @@ input[type=text] {
   align-items: center;
   flex-basis: 100%;
 }
+
+.week-outlook {
+  text-align: center;
+}
