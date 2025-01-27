@@ -23,14 +23,20 @@ searchCityForm.addEventListener("submit", async (e) => {
 
     
   // TIME INFO
-  const cityTime = jsonSearch;
+  const cityTime = currentConditions.datetime;
+  console.log("time: " + cityTime.slice(0, cityTime.length - 3));
+  // 13%12 returns 1, if the first number is larger than 12, use pm
+  // if the first number is smaller than 12, use am
+  // if the first number is a zero, use 12am
+  // if the first number is a 12, use 12pm
+
   const citySunrise = currentConditions.sunrise;
   console.log("sunrise: " + citySunrise);
 
   const citySunset = currentConditions.sunset;
   console.log("sunset: " + citySunset);
 
-
+  /*
   // TEMPERATURE INFO
   // Actual temp
   const tempActual = currentConditions.temp;
@@ -66,6 +72,8 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Week 
   const outlookWeek = jsonSearch.description;
   console.log("week outlook: " + outlookWeek);
+  */
+
 
   // WEATHER CONDITIONS
   /*
