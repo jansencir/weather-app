@@ -3,7 +3,7 @@ const searchCityForm = document.getElementById("search-city-form");
 
 const myKey = "key=28AP59HQHVPSMRZYL9C4AZKVB";
 
-const tempURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?";
+const tempURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/honolulu?";
 
 
 searchCityForm.addEventListener("submit", async (e) => {
@@ -17,10 +17,17 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   const searchUp = await fetch(mySearch);
   const jsonSearch = await searchUp.json();
-  // console.log(jsonSearch);
+  console.log(jsonSearch);
+
+
+  // CITY INFO
+  const cityDetails = jsonSearch.resolvedAddress;
+  const cityDetailsArray = cityDetails.split(",").map(str => str.trim());
+  console.log(cityDetailsArray);
 
 
   // WEATHER CONDITIONS
+  /*
   console.log("Weather Conditions")
   const currentWeather = jsonSearch.currentConditions;
   console.log(currentWeather);
@@ -56,7 +63,7 @@ searchCityForm.addEventListener("submit", async (e) => {
   // UV Index
   const currentUVIndex = currentWeather.uvindex;
   console.log("uv index: " + currentUVIndex);
-
+  */
 
 })
 
