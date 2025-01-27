@@ -58,6 +58,14 @@ searchCityForm.addEventListener("submit", async (e) => {
   const cityDetailsArray = cityDetails.split(",").map(str => str.trim());
   console.log(cityDetailsArray);
 
+  // OUTLOOKS
+  // Day Outlook
+  const outlookDay = jsonSearch.days[0].description;
+  console.log("day description: " + outlookDay);
+
+  // Week 
+  const outlookWeek = jsonSearch.description;
+  console.log("week outlook: " + outlookWeek);
 
   // WEATHER CONDITIONS
   /*
