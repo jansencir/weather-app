@@ -17,10 +17,59 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   const searchUp = await fetch(mySearch);
   const jsonSearch = await searchUp.json();
-  console.log(jsonSearch);
+  // console.log(jsonSearch);
+
+
+  // WEATHER CONDITIONS
+  console.log("Weather Conditions")
+  const currentWeather = jsonSearch.currentConditions;
+  console.log(currentWeather);
+
+  // Conditions
+  const currentConditions = currentWeather.conditions;
+  console.log("conditions: " + currentConditions);
+
+  // Precipitation
+  const currentPrecipitation = currentWeather.precip;
+  console.log("precipitation: " + currentPrecipitation);
+
+  // Humidity
+  const currentHumidity = currentWeather.humidity;
+  console.log("humidity: " + currentHumidity);
+
+  // Wind Speed
+  const currentWindSpeed = currentWeather.windspeed;
+  console.log("wind speed: " + currentWindSpeed);
+
+  // Wind Direction
+  const currentWindDir = currentWeather.winddir;
+  console.log("wind direction: " + currentWindDir)
+
+  // Visibility
+  const currentVisibility = currentWeather.visibility;
+  console.log("visibility: " + currentVisibility)
+
+  // Cloud Cover
+  const currentCloudCover = currentWeather.cloudcover;
+  console.log("cloud cover: " + currentCloudCover);
+
+  // UV Index
+  const currentUVIndex = currentWeather.uvindex;
+  console.log("uv index: " + currentUVIndex);
 
 
 })
+
+/**Conditions to Grab
+ * Conditions
+ * Precipitation
+ * Humidity
+ * Wind Speed
+ * Wind Direction
+ * Visibility
+ * Cloud Cover
+ * UV Index
+*/
 
 
 
