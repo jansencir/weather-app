@@ -21,6 +21,15 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   const currentConditions = jsonSearch.currentConditions;
 
+    
+  // TIME INFO
+  const cityTime = jsonSearch;
+  const citySunrise = currentConditions.sunrise;
+  console.log("sunrise: " + citySunrise);
+
+  const citySunset = currentConditions.sunset;
+  console.log("sunset: " + citySunset);
+
 
   // TEMPERATURE INFO
   // Actual temp
