@@ -66,6 +66,14 @@ searchCityForm.addEventListener("submit", async (e) => {
   console.log("temperature low: " + tempLow);
 
 
+  // Day & Week Outlook
+  // Day Outlook
+  const outlookDay = cityJSON.days[0].description;
+  console.log("day description: " + outlookDay);
+
+  // Week 
+  const outlookWeek = cityJSON.description;
+  console.log("week outlook: " + outlookWeek);
 
 
   // const mySearch = tempURL + myKey;
