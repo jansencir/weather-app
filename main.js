@@ -45,6 +45,28 @@ searchCityForm.addEventListener("submit", async (e) => {
   console.log(cityDetailsArray);
 
 
+  // Temperature Info
+  const tempActual = currentConditions.temp;
+  console.log("temperature: " + tempActual)
+
+  // Feels like temp
+  const tempFeels = currentConditions.feelslike;
+  console.log("feels like: " + tempFeels);
+
+  // Day
+  const day = cityJSON.days[0];
+  console.log(day);
+
+  // Temp high
+  const tempHigh = cityJSON.days[0].tempmax;
+  console.log("temperature high: " + tempHigh);
+
+  // Temp low
+  const tempLow = cityJSON.days[0].tempmin;
+  console.log("temperature low: " + tempLow);
+
+
+
 
   // const mySearch = tempURL + myKey;
 
