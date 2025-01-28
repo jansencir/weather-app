@@ -1,10 +1,12 @@
 // Grab user input
 const searchCityForm = document.getElementById("search-city-form");
-
+const apiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 const myKey = "?key=28AP59HQHVPSMRZYL9C4AZKVB";
 
-const apiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
+const displayInfo = (domEl , newText) => {
+  domEl.textContent = newText;
+}
 
 searchCityForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -64,6 +66,8 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Temp low
   const tempLow = cityJSON.days[0].tempmin;
   console.log("temperature low: " + tempLow);
+  // 222: Add function that converts F to C
+  // Take F, do the math, return C
 
 
   // Day & Week Outlook
