@@ -38,6 +38,14 @@ searchCityForm.addEventListener("submit", async (e) => {
   // if the first number is a zero, use 12am
   // if the first number is a 12, use 12pm
 
+
+  // City Info
+  const cityDetails = cityJSON.resolvedAddress;
+  const cityDetailsArray = cityDetails.split(",").map(str => str.trim());
+  console.log(cityDetailsArray);
+
+
+
   // const mySearch = tempURL + myKey;
 
   // const searchUp = await fetch(mySearch);
