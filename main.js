@@ -76,6 +76,36 @@ searchCityForm.addEventListener("submit", async (e) => {
   console.log("week outlook: " + outlookWeek);
 
 
+  // Current Weather Conditions
+  // Precipitation
+  const currentPrecipitation = currentConditions.precip;
+  console.log("precipitation: " + currentPrecipitation);
+
+  // Humidity
+  const currentHumidity = currentConditions.humidity;
+  console.log("humidity: " + currentHumidity);
+
+  // Wind Speed
+  const currentWindSpeed = currentConditions.windspeed;
+  console.log("wind speed: " + currentWindSpeed);
+
+  // Wind Direction
+  const currentWindDir = currentConditions.winddir;
+  console.log("wind direction: " + currentWindDir)
+
+  // Visibility
+  const currentVisibility = currentConditions.visibility;
+  console.log("visibility: " + currentVisibility)
+
+  // Cloud Cover
+  const currentCloudCover = currentConditions.cloudcover;
+  console.log("cloud cover: " + currentCloudCover);
+
+  // UV Index
+  const currentUVIndex = currentConditions.uvindex;
+  console.log("uv index: " + currentUVIndex);
+
+
   // const mySearch = tempURL + myKey;
 
   // const searchUp = await fetch(mySearch);
