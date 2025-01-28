@@ -31,10 +31,10 @@ searchCityForm.addEventListener("submit", async (e) => {
   // if the first number is a 12, use 12pm
 
   const citySunrise = currentConditions.sunrise;
-  console.log("sunrise: " + citySunrise);
+  console.log("sunrise: " + citySunrise.slice(0, citySunrise.length - 3));
 
   const citySunset = currentConditions.sunset;
-  console.log("sunset: " + citySunset);
+  console.log("sunset: " + citySunset.slice(0, citySunset.length -3 ));
 
   /*
   // TEMPERATURE INFO
