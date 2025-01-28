@@ -1,40 +1,61 @@
 // Grab user input
 const searchCityForm = document.getElementById("search-city-form");
 
-const myKey = "key=28AP59HQHVPSMRZYL9C4AZKVB";
+const myKey = "?key=28AP59HQHVPSMRZYL9C4AZKVB";
 
-const tempURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/honolulu?";
+const apiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
 
 searchCityForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const searchCityInput = document.getElementById("search");
-  console.log(searchCityInput.value);
+  const city = searchCityInput.value;
+
+  console.log(city);
   console.log("clicked");
 
+  const citySearch = await fetch(apiURL + city + myKey);
+  const cityJSON = await citySearch.json();
+  console.log(cityJSON);
 
-  const mySearch = tempURL + myKey;
+  // Current Conditions
+  const currentConditions = cityJSON.currentConditions;
+  console.log(currentConditions);
 
-  const searchUp = await fetch(mySearch);
-  const jsonSearch = await searchUp.json();
-  console.log(jsonSearch);
 
-  const currentConditions = jsonSearch.currentConditions;
+  // Time Info
+  const cityTime = currentConditions.datetime;
+  console.log(cityTime.slice(0, cityTime.length - 3));
+
+  const cityTimeSunrise = currentConditions.sunrise;
+  console.log("sunset: " + cityTimeSunrise.slice(0, cityTimeSunrise.length - 3));
+
+  const cityTimeSunset = currentConditions.sunset;
+  console.log("sunset: " + cityTimeSunset.slice(0, cityTimeSunset.length - 3));
+
+
+  // const mySearch = tempURL + myKey;
+
+  // const searchUp = await fetch(mySearch);
+  // const jsonSearch = await searchUp.json();
+  // console.log(jsonSearch);
+
+  // const currentConditions = jsonSearch.currentConditions;
 
     
   // TIME INFO
-  const cityTime = currentConditions.datetime;
-  console.log("time: " + cityTime.slice(0, cityTime.length - 3));
+  // const cityTime = currentConditions.datetime;
+  // console.log("time: " + cityTime.slice(0, cityTime.length - 3));
   // 13%12 returns 1, if the first number is larger than 12, use pm
   // if the first number is smaller than 12, use am
   // if the first number is a zero, use 12am
   // if the first number is a 12, use 12pm
 
-  const citySunrise = currentConditions.sunrise;
-  console.log("sunrise: " + citySunrise.slice(0, citySunrise.length - 3));
+  // const citySunrise = currentConditions.sunrise;
+  // console.log("sunrise: " + citySunrise.slice(0, citySunrise.length - 3));
 
-  const citySunset = currentConditions.sunset;
-  console.log("sunset: " + citySunset.slice(0, citySunset.length -3 ));
+  // const citySunset = currentConditions.sunset;
+  // console.log("sunset: " + citySunset.slice(0, citySunset.length -3 ));
 
   /*
   // TEMPERATURE INFO
@@ -137,6 +158,7 @@ searchCityForm.addEventListener("submit", async (e) => {
  *  Turn into a JS object
  *  Start grabbing info you want
  *  Display the info you want in the specific area
+ * ADD FUNCTION TO CATCH ERRORS AND NOTIFY USER
  * Color changing weather
  *  Take each general weather condition
  *  Set color depending on that weather condition
