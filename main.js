@@ -82,26 +82,34 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   // Temperature Info
   const tempActual = currentConditions.temp;
-  console.log("temperature: " + tempActual)
+  // console.log("temperature: " + tempActual)
+  const domTempActual = document.querySelector(".temp-current");
+  displayInfo(domTempActual, fahrenheitToCelsius(tempActual));
 
   // Feels like temp
   const tempFeels = currentConditions.feelslike;
-  console.log("feels like: " + tempFeels);
+  // console.log("feels like: " + tempFeels);
+  const domTempFeels = document.querySelector(".temp-feels");
+  displayInfo(domTempFeels, fahrenheitToCelsius(tempFeels));
 
   // Day
-  const day = cityJSON.days[0];
-  console.log(day);
-
-  // Temp high
-  const tempHigh = cityJSON.days[0].tempmax;
-  console.log("temperature high: " + tempHigh);
-
+  // const day = cityJSON.days[0];
+  // console.log(day);
+  
   // Temp low
   const tempLow = cityJSON.days[0].tempmin;
-  console.log("temperature low: " + tempLow);
+  // console.log("temperature low: " + tempLow);
   // 222: Add function that converts F to C
   // Take F, do the math, return C
+  const domTempLow = document.querySelector(".temp-low");
+  displayInfo(domTempLow, fahrenheitToCelsius(tempLow));
 
+  
+  // Temp high
+  const tempHigh = cityJSON.days[0].tempmax;
+  // console.log("temperature high: " + tempHigh);
+  const domTempHigh = document.querySelector(".temp-high");
+  displayInfo(domTempHigh, fahrenheitToCelsius(tempHigh));
 
   // Day & Week Outlook
   // Day Outlook
