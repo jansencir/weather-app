@@ -13,13 +13,6 @@ const displayInfo = (domEl , newText) => {
 const timeAmPm = (time) => {
   let hour = time.split(":")[0];
   let minute = time.split(":")[1];
-  // console.log(hour);
-  // console.log(minute);
-  // 222: Create function that turns time into AM or PM
-  // 13%12 returns 1, if the first number is larger than 12, use pm
-  // if the first number is smaller than 12, use am
-  // if the first number is a zero, use 12am
-  // if the first number is a 12, use 12pm
 
   if (hour === "00") {
     hour = 12;
@@ -33,14 +26,6 @@ const timeAmPm = (time) => {
     return `${hour}:${minute}PM`;
   }
 }
-
-console.log(timeAmPm("00:00"));
-console.log(timeAmPm("07:37"));
-console.log(timeAmPm("11:40"));
-console.log(timeAmPm("12:00"));
-console.log(timeAmPm("13:01"));
-console.log(timeAmPm("16:24"));
-console.log(timeAmPm("23:59"));
 
 
 
