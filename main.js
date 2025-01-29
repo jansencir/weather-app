@@ -68,7 +68,16 @@ searchCityForm.addEventListener("submit", async (e) => {
   // City Info
   const cityDetails = cityJSON.resolvedAddress;
   const cityDetailsArray = cityDetails.split(",").map(str => str.trim());
-  console.log(cityDetailsArray);
+  // console.log(cityDetailsArray);
+  
+  const domCityName = document.querySelector(".city-name");
+  const domStateName = document.querySelector(".state-name");
+  const domCountryName = document.querySelector(".country-name");
+
+  displayInfo(domCityName, cityDetailsArray[0]);
+  displayInfo(domStateName, cityDetailsArray[1]);
+  displayInfo(domCountryName, cityDetailsArray[2]);
+
 
 
   // Temperature Info
