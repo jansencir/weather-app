@@ -8,6 +8,16 @@ const displayInfo = (domEl , newText) => {
   domEl.textContent = newText;
 }
 
+
+
+const timeAmPm = (time) => {
+  // 222: Create function that turns time into AM or PM
+  // 13%12 returns 1, if the first number is larger than 12, use pm
+  // if the first number is smaller than 12, use am
+  // if the first number is a zero, use 12am
+  // if the first number is a 12, use 12pm
+}
+
 const fahrenheitToCelsius = (f) => {
   const toCelsius = (f - 32) * (5/9);
   return toCelsius.toFixed(1);
@@ -39,11 +49,6 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   const cityTimeSunset = currentConditions.sunset;
   console.log("sunset: " + cityTimeSunset.slice(0, cityTimeSunset.length - 3));
-  // 222: Create function that turns time into AM or PM
-  // 13%12 returns 1, if the first number is larger than 12, use pm
-  // if the first number is smaller than 12, use am
-  // if the first number is a zero, use 12am
-  // if the first number is a 12, use 12pm
 
 
   // City Info
