@@ -26,8 +26,8 @@ const timeAmPm = (time) => {
 }
 
 const fahrenheitToCelsius = (f) => {
-  const toCelsius = (f - 32) * (5/9);
-  return toCelsius.toFixed(1);
+  const toCelsius = ((f - 32) * (5/9)).toFixed(1);
+  return `${f}°F/${toCelsius}°C`;
 }
 
 // Controller
