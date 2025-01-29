@@ -8,6 +8,11 @@ const displayInfo = (domEl , newText) => {
   domEl.textContent = newText;
 }
 
+const fahrenheitToCelsius = (f) => {
+  const toCelsius = (f - 32) * (5/9);
+  return toCelsius.toFixed(1);
+}
+
 searchCityForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const searchCityInput = document.getElementById("search");
@@ -83,7 +88,8 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Current Weather Conditions
   // Precipitation
   const currentPrecipitation = currentConditions.precip;
-  console.log("precipitation: " + currentPrecipitation);
+  const currentPrecipitationProb = currentConditions.precipprob
+  console.log("precipitation: " + currentPrecipitation + ` (${currentPrecipitationProb}%)`);
 
   // Humidity
   const currentHumidity = currentConditions.humidity;
