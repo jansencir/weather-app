@@ -176,10 +176,15 @@ input {
   height: 18px;
 }
 
+.alert-message {
+  height: 28px;
+  margin-top: 4px;
+}
+
 #city-container {
   display: flex;
   width: 80%;
-  margin: 24px auto;
+  margin: 0px auto 24px;
 }
 
 #city-container div {
