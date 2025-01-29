@@ -1,14 +1,12 @@
-// Grab user input
+// Grab User Input
 const searchCityForm = document.getElementById("search-city-form");
 const apiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 const myKey = "?key=28AP59HQHVPSMRZYL9C4AZKVB";
 
-
+// Functions
 const displayInfo = (domEl , newText) => {
   domEl.textContent = newText;
 }
-
-
 
 const timeAmPm = (time) => {
   let hour = time.split(":")[0];
@@ -27,14 +25,12 @@ const timeAmPm = (time) => {
   }
 }
 
-
-
-
 const fahrenheitToCelsius = (f) => {
   const toCelsius = (f - 32) * (5/9);
   return toCelsius.toFixed(1);
 }
 
+// Controller
 searchCityForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const searchCityInput = document.getElementById("search");
@@ -53,14 +49,20 @@ searchCityForm.addEventListener("submit", async (e) => {
 
 
   // Time Info
-  const cityTime = currentConditions.datetime;
+  const cityTime = currentConditions.datetime.slice(0, this.length - 3);
   console.log(cityTime.slice(0, cityTime.length - 3));
+  const domCityTime = document.querySelector(".city-time");
+  displayInfo(domCityTime, timeAmPm(cityTime));
 
-  const cityTimeSunrise = currentConditions.sunrise;
-  console.log("sunset: " + cityTimeSunrise.slice(0, cityTimeSunrise.length - 3));
+  const cityTimeSunrise = currentConditions.sunrise.slice(0, this.length - 3);
+  // console.log("sunset: " + cityTimeSunrise.slice(0, cityTimeSunrise.length - 3));
+  const domCitySunrise = document.querySelector(".city-time-sunrise");
+  displayInfo(domCitySunrise, timeAmPm(cityTimeSunrise));
 
   const cityTimeSunset = currentConditions.sunset;
-  console.log("sunset: " + cityTimeSunset.slice(0, cityTimeSunset.length - 3));
+  // console.log("sunset: " + cityTimeSunset.slice(0, cityTimeSunset.length - 3));
+  const domCitySunset = document.querySelector(".city-time-sunset");
+  displayInfo(domCitySunset, timeAmPm(cityTimeSunset));
 
 
   // City Info
