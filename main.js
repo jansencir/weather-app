@@ -56,21 +56,7 @@ const compassDirection = (degree) => {
 }
 
 const backgroundChanger = (weather, div) => {
-  console.log(weather);
   const weatherPrimary = weather.toLowerCase().split(",")[0];
-  console.log(weatherPrimary);
-  // 222: Make function that changes the color of the background depending on the weather
-  // Look through API documents to see what weather conditions there are
-  // if the weather contains "this string"
-  // change the "div" background color to this
-
-  // Conditions
-  // Clear
-  // Overcast
-  // Cloudy
-  // Rain
-  // Snow
-  // Windy
 
   if (weatherPrimary.includes("overcast")) {
     div.style.background = ("var(--weather-overcast)");
@@ -185,6 +171,7 @@ searchCityForm.addEventListener("submit", async (e) => {
   const domCurrentWeather = document.querySelector(".conditions");
   displayInfo(domCurrentWeather, currentWeather);
 
+  // Change Div Background Depending on Current Weather
   const domWeatherContainer = document.getElementById("weather-current");
   backgroundChanger(currentWeather, domWeatherContainer);
 
