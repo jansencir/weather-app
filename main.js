@@ -55,6 +55,36 @@ const compassDirection = (degree) => {
   }
 }
 
+const backgroundChanger = (weather, div) => {
+  console.log(weather);
+  const weatherPrimary = weather.toLowerCase().split(",")[0];
+  console.log(weatherPrimary);
+  // 222: Make function that changes the color of the background depending on the weather
+  // Look through API documents to see what weather conditions there are
+  // if the weather contains "this string"
+  // change the "div" background color to this
+
+  // Conditions
+  // Clear
+  // Overcast
+  // Cloudy
+  // Rain
+  // Snow
+  // Windy
+
+  if (weatherPrimary.includes("overcast")) {
+    div.style.background = ("var(--weather-overcast)");
+  } else if (weatherPrimary.includes("cloudy")) {
+    div.style.background = ("var(--weather-cloudy)");
+  } else if (weatherPrimary.includes("rain")) {
+    div.style.background = ("var(--weather-rain)");
+  } else if (weatherPrimary.includes("snow")) {
+    div.style.background = ("var(--weather-snow)");
+  } else {
+    div.style.background = ("var(--weather-clear)");
+  };
+};
+
 const weatherSoon = (city) => {
   let day = 0;
   for (let i = 1; i <= 6; i++) {
@@ -75,15 +105,10 @@ const weatherSoon = (city) => {
     <p>${upcomingTime}</p>
     <p>${fahrenheitToCelsius(upcomingTemp)}</p>
     <p>${upcomingConditions}</p>
-    `
+    `;
+    // domWeatherSoon.style.background = "var(--weather-rain)";
+    backgroundChanger(upcomingConditions, domWeatherSoon);
   }
-}
-
-const backgroundChanger = (weather, div) => {
-  // 222: Make function that changes the color of the background depending on the weather
-  // Look through API documents to see what weather conditions there are
-  // if the weather contains "this string"
-  // change the "div" background color to this
 }
 
 
@@ -159,6 +184,9 @@ searchCityForm.addEventListener("submit", async (e) => {
   const currentWeather = currentConditions.conditions;
   const domCurrentWeather = document.querySelector(".conditions");
   displayInfo(domCurrentWeather, currentWeather);
+
+  const domWeatherContainer = document.getElementById("weather-current");
+  backgroundChanger(currentWeather, domWeatherContainer);
 
   // Precipitation
   const currentPrecipitation = currentConditions.precip;
