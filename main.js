@@ -86,9 +86,6 @@ searchCityForm.addEventListener("submit", async (e) => {
   const searchCityInput = document.getElementById("search");
   const city = searchCityInput.value;
 
-  console.log(city);
-  console.log("clicked");
-
   const citySearch = await fetch(apiURL + city + myKey);
   const cityJSON = await citySearch.json();
   console.log(cityJSON);
@@ -100,7 +97,7 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   // Time Info
   const cityTime = currentConditions.datetime.slice(0, this.length - 3);
-  console.log(cityTime.slice(0, cityTime.length - 3));
+  // console.log(cityTime.slice(0, cityTime.length - 3));
   const domCityTime = document.querySelector(".city-time");
   displayInfo(domCityTime, timeAmPm(cityTime));
 
@@ -164,13 +161,13 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Day & Week Outlook
   // Day Outlook
   const outlookDay = cityJSON.days[0].description;
-  console.log("day description: " + outlookDay);
+  // console.log("day description: " + outlookDay);
   const domOutlookDay = document.querySelector(".day-outlook");
   displayInfo(domOutlookDay, outlookDay);
 
   // Week 
   const outlookWeek = cityJSON.description;
-  console.log("week outlook: " + outlookWeek);
+  // console.log("week outlook: " + outlookWeek);
   const domOutlookWeek = document.querySelector(".week-outlook");
   displayInfo(domOutlookWeek, outlookWeek);
 
@@ -184,43 +181,43 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Precipitation
   const currentPrecipitation = currentConditions.precip;
   const currentPrecipitationProb = currentConditions.precipprob
-  console.log("precipitation: " + currentPrecipitation + ` (${currentPrecipitationProb}%)`);
+  // console.log("precipitation: " + currentPrecipitation + ` (${currentPrecipitationProb}%)`);
   const domCurrentPrecipitation = document.querySelector(".precipitation");
   displayInfo(domCurrentPrecipitation, `${currentPrecipitation} (${currentPrecipitationProb}%)`)
 
   // Humidity
   const currentHumidity = currentConditions.humidity;
-  console.log("humidity: " + currentHumidity);
+  // console.log("humidity: " + currentHumidity);
   const domCurrentHumidity = document.querySelector(".humidity");
   displayInfo(domCurrentHumidity, currentHumidity);
 
   // Wind Speed
   const currentWindSpeed = currentConditions.windspeed;
-  console.log("wind speed: " + currentWindSpeed);
+  // console.log("wind speed: " + currentWindSpeed);
   const domCurrentWindSpeed = document.querySelector(".wind-speed");
   displayInfo(domCurrentWindSpeed, mphToKph(currentWindSpeed));
 
   // Wind Direction
   const currentWindDir = currentConditions.winddir;
-  console.log("wind direction: " + currentWindDir);
+  // console.log("wind direction: " + currentWindDir);
   const domCurrentWindDir = document.querySelector(".wind-dir");
   displayInfo(domCurrentWindDir, compassDirection(currentWindDir));
 
   // Visibility
   const currentVisibility = currentConditions.visibility;
-  console.log("visibility: " + currentVisibility)
+  // console.log("visibility: " + currentVisibility)
   const domCurrentVisibility = document.querySelector(".visibility");
   displayInfo(domCurrentVisibility, currentVisibility);
 
   // Cloud Cover
   const currentCloudCover = currentConditions.cloudcover;
-  console.log("cloud cover: " + currentCloudCover);
+  // console.log("cloud cover: " + currentCloudCover);
   const domCurrentCloudCover = document.querySelector(".cloud-cover");
   displayInfo(domCurrentCloudCover, currentCloudCover);
 
   // UV Index
   const currentUVIndex = currentConditions.uvindex;
-  console.log("uv index: " + currentUVIndex);
+  // console.log("uv index: " + currentUVIndex);
   const domCurrentUVIndex = document.querySelector(".uv-index");
   displayInfo(domCurrentUVIndex, currentUVIndex);
 
