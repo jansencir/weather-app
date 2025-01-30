@@ -35,6 +35,26 @@ const mphToKph = (mph) => {
   return `${mph}mph / ${toKph}kph`;
 }
 
+const compassDirection = (degree) => {
+  if (degree >= 337.6 || degree <= 22.5) {
+    return `${degree} - North`;
+  } else if (degree >= 22.6 && degree <= 67.5) {
+    return `${degree} - Northeast`;
+  } else if (degree >= 67.6 && degree <= 112.5) {
+    return `${degree} - East`;
+  } else if (degree >= 112.6 && degree <= 157.5) {
+    return `${degree} - Southeast`;
+  } else if (degree >= 157.6 && degree <= 202.5) {
+    return `${degree} - South`;
+  } else if (degree >= 202.6 && degree <= 247.5) {
+    return `${degree} - Southwest`;
+  } else if (degree >= 247.6 && degree <= 292.5) {
+    return `${degree} - West`;
+  } else if (degress >= 292.6 && degree <= 337.5) {
+    return `${degree} - Northwest`;
+  }
+}
+
 
 // Controller
 searchCityForm.addEventListener("submit", async (e) => {
@@ -158,7 +178,9 @@ searchCityForm.addEventListener("submit", async (e) => {
 
   // Wind Direction
   const currentWindDir = currentConditions.winddir;
-  console.log("wind direction: " + currentWindDir)
+  console.log("wind direction: " + currentWindDir);
+  const domCurrentWindDir = document.querySelector(".wind-dir");
+  displayInfo(domCurrentWindDir, currentWindDir);
 
   // Visibility
   const currentVisibility = currentConditions.visibility;
