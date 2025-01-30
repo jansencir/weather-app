@@ -185,14 +185,20 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Visibility
   const currentVisibility = currentConditions.visibility;
   console.log("visibility: " + currentVisibility)
+  const domCurrentVisibility = document.querySelector(".visibility");
+  displayInfo(domCurrentVisibility, currentVisibility);
 
   // Cloud Cover
   const currentCloudCover = currentConditions.cloudcover;
   console.log("cloud cover: " + currentCloudCover);
+  const domCurrentCloudCover = document.querySelector(".cloud-cover");
+  displayInfo(domCurrentCloudCover, currentCloudCover);
 
   // UV Index
   const currentUVIndex = currentConditions.uvindex;
   console.log("uv index: " + currentUVIndex);
+  const domCurrentUVIndex = document.querySelector(".uv-index");
+  displayInfo(domCurrentUVIndex, currentUVIndex);
 
 
   // const mySearch = tempURL + myKey;
