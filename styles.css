@@ -219,12 +219,6 @@ input {
   padding-left: var(--spacing-city-outer);
 }
 
-#weather-container,
-#weather-current,
-#weather-soon {
-  outline: 1px solid red;
-}
-
 #weather-container {
   margin: 48px 0;
   color: var(--off-white);
@@ -265,8 +259,6 @@ input {
 }
 
 #weather-soon div {
-  outline: 1px solid red;
-  /* background: linear-gradient(#a8ddef, #fbfbca); */
   background: var(--weather-clear);
 
   display: flex;
