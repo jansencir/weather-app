@@ -104,21 +104,25 @@ searchCityForm.addEventListener("submit", async (e) => {
   const domTempLow = document.querySelector(".temp-low");
   displayInfo(domTempLow, fahrenheitToCelsius(tempLow));
 
-  
   // Temp high
   const tempHigh = cityJSON.days[0].tempmax;
   // console.log("temperature high: " + tempHigh);
   const domTempHigh = document.querySelector(".temp-high");
   displayInfo(domTempHigh, fahrenheitToCelsius(tempHigh));
 
+
   // Day & Week Outlook
   // Day Outlook
   const outlookDay = cityJSON.days[0].description;
   console.log("day description: " + outlookDay);
+  const domOutlookDay = document.querySelector(".day-outlook");
+  displayInfo(domOutlookDay, outlookDay);
 
   // Week 
   const outlookWeek = cityJSON.description;
   console.log("week outlook: " + outlookWeek);
+  const domOutlookWeek = document.querySelector(".week-outlook");
+  displayInfo(domOutlookWeek, outlookWeek);
 
 
   // Current Weather Conditions
