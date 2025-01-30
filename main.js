@@ -9,17 +9,21 @@ const displayInfo = (domEl , newText) => {
 }
 
 const timeAmPm = (time) => {
-  let hour = time.split(":")[0];
+  let hour = parseInt(time.split(":")[0]);
   let minute = time.split(":")[1];
 
-  if (hour === "00") {
+  console.log("timeAmPm function")
+  console.log(hour);
+  console.log(minute);
+
+  if (hour === 0) {
     hour = 12;
     return `${hour}:${minute}AM`;
-  } else if (hour > "0" && hour < "12") {
+  } else if (hour > 0 && hour < 12) {
     return `${hour}:${minute}AM`;
-  } else if (hour === "12") {
+  } else if (hour === 12) {
     return `${hour}:${minute}PM`;
-  } else if (hour > "12") {
+  } else if (hour > 12) {
     hour = hour%12
     return `${hour}:${minute}PM`;
   }
@@ -55,15 +59,52 @@ const compassDirection = (degree) => {
   }
 }
 
-const weatherSoon = () => {
-  /** Upcoming time pseudocode
-   * while (i = 0; i < 6; i++) do this:
-   * take days[0]
-   * take current hour, add one each time
-   * if the current hour is greater (>) than 23
-   * go to days[1], change current hour to 00
-   */
 
+const weatherSoon = (city) => {
+  /** Upcoming time pseudocode
+   * // 222 issue: figure out how to go back to zero
+   * use remainder
+   * if (hour > 23) {
+   * day = 1 // next day
+   * hour %= 23;
+   * }
+   */
+  let day = 0;
+  console.log(day);
+  for (let i = 1; i <= 6; i++) {
+    let hour = parseInt(city.currentConditions.datetime.slice(0, 2));
+    // console.log("hour here")
+    // console.log(hour);
+    hour += i;
+    // console.log(`hour after plus: ${hour}`);
+    if (hour > 23) {
+      day = 1;
+      // console.log(`check ${day}`);
+      hour %= 24;
+      // console.log(`check ${hour}`);
+    }
+
+    // console.log(`${hour}:00`);
+    // console.log(timeAmPm(`${hour}:00`))
+
+    const upcomingTime = timeAmPm(`${hour}:00`);
+    const upcomingTemp = city.days[day].hours[hour].temp;
+    const upcomingConditions = city.days[day].hours[hour].conditions;
+    console.log(upcomingTime);
+    console.log(fahrenheitToCelsius(upcomingTemp));
+    console.log(upcomingConditions);
+
+    console.log(day);
+    console.log(hour);
+    let domWeatherSoon = document.querySelector(`.weather-soon-${i}`);
+    console.log(domWeatherSoon);
+
+    domWeatherSoon.innerHTML = `
+    <p>${upcomingTime}</p>
+    <p>${fahrenheitToCelsius(upcomingTemp)}</p>
+    <p>${upcomingConditions}</p>
+    `
+  }
 }
 
 
@@ -210,6 +251,10 @@ searchCityForm.addEventListener("submit", async (e) => {
   console.log("uv index: " + currentUVIndex);
   const domCurrentUVIndex = document.querySelector(".uv-index");
   displayInfo(domCurrentUVIndex, currentUVIndex);
+
+
+  // Upcoming Weather
+  weatherSoon(cityJSON);
 
 
   // const mySearch = tempURL + myKey;
