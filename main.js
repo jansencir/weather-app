@@ -98,121 +98,133 @@ const weatherSoon = (city) => {
 }
 
 
-// Controller
-searchCityForm.addEventListener("submit", async (e) => {
+// Search Controller
+const searchController = async (city) => {
+  const alertMsg = document.querySelector(".alert-message")
+  try {
+    alertMsg.textContent = "";
+
+    const citySearch = await fetch(apiURL + city + myKey);
+    const cityJSON = await citySearch.json();
+    console.log(cityJSON);
+  
+    // Current Conditions
+    const currentConditions = cityJSON.currentConditions;
+    console.log(currentConditions);
+  
+    // Time Info
+    const cityTime = currentConditions.datetime.slice(0, this.length - 3);
+    const domCityTime = document.querySelector(".city-time");
+    displayInfo(domCityTime, timeAmPm(cityTime));
+  
+    const cityTimeSunrise = currentConditions.sunrise.slice(0, this.length - 3);
+    const domCitySunrise = document.querySelector(".city-time-sunrise");
+    displayInfo(domCitySunrise, timeAmPm(cityTimeSunrise));
+  
+    const cityTimeSunset = currentConditions.sunset;
+    const domCitySunset = document.querySelector(".city-time-sunset");
+    displayInfo(domCitySunset, timeAmPm(cityTimeSunset));
+  
+    // City Info
+    const cityDetails = cityJSON.resolvedAddress;
+    const cityDetailsArray = cityDetails.split(",").map(str => str.trim());
+    
+    const domCityName = document.querySelector(".city-name");
+    const domStateName = document.querySelector(".state-name");
+    const domCountryName = document.querySelector(".country-name");
+  
+    displayInfo(domCityName, cityDetailsArray[0]);
+    displayInfo(domStateName, cityDetailsArray[1]);
+    displayInfo(domCountryName, cityDetailsArray[2]);
+  
+    // Temperature Info
+    const tempActual = currentConditions.temp;
+    const domTempActual = document.querySelector(".temp-current");
+    displayInfo(domTempActual, fahrenheitToCelsius(tempActual));
+  
+    // Feels Like Temp
+    const tempFeels = currentConditions.feelslike;
+    const domTempFeels = document.querySelector(".temp-feels");
+    displayInfo(domTempFeels, fahrenheitToCelsius(tempFeels));
+    
+    // Temp low
+    const tempLow = cityJSON.days[0].tempmin;
+    const domTempLow = document.querySelector(".temp-low");
+    displayInfo(domTempLow, fahrenheitToCelsius(tempLow));
+  
+    // Temp high
+    const tempHigh = cityJSON.days[0].tempmax;
+    const domTempHigh = document.querySelector(".temp-high");
+    displayInfo(domTempHigh, fahrenheitToCelsius(tempHigh));
+  
+    // Day & Week Outlook
+    const outlookDay = cityJSON.days[0].description;
+    const domOutlookDay = document.querySelector(".day-outlook");
+    displayInfo(domOutlookDay, outlookDay);
+  
+    const outlookWeek = cityJSON.description;
+    const domOutlookWeek = document.querySelector(".week-outlook");
+    displayInfo(domOutlookWeek, outlookWeek);
+  
+    // Current Weather Conditions
+    const currentWeather = currentConditions.conditions;
+    const domCurrentWeather = document.querySelector(".conditions");
+    displayInfo(domCurrentWeather, currentWeather);
+  
+    // Change Div Background Depending on Current Weather
+    const domWeatherContainer = document.getElementById("weather-current");
+    backgroundChanger(currentWeather, domWeatherContainer);
+  
+    // Precipitation
+    const currentPrecipitation = currentConditions.precip;
+    const currentPrecipitationProb = currentConditions.precipprob
+    const domCurrentPrecipitation = document.querySelector(".precipitation");
+    displayInfo(domCurrentPrecipitation, `${currentPrecipitation} (${currentPrecipitationProb}%)`)
+  
+    // Humidity
+    const currentHumidity = currentConditions.humidity;
+    const domCurrentHumidity = document.querySelector(".humidity");
+    displayInfo(domCurrentHumidity, currentHumidity);
+  
+    // Wind Speed
+    const currentWindSpeed = currentConditions.windspeed;
+    const domCurrentWindSpeed = document.querySelector(".wind-speed");
+    displayInfo(domCurrentWindSpeed, mphToKph(currentWindSpeed));
+  
+    // Wind Direction
+    const currentWindDir = currentConditions.winddir;
+    const domCurrentWindDir = document.querySelector(".wind-dir");
+    displayInfo(domCurrentWindDir, compassDirection(currentWindDir));
+  
+    // Visibility
+    const currentVisibility = currentConditions.visibility;
+    const domCurrentVisibility = document.querySelector(".visibility");
+    displayInfo(domCurrentVisibility, currentVisibility);
+  
+    // Cloud Cover
+    const currentCloudCover = currentConditions.cloudcover;
+    const domCurrentCloudCover = document.querySelector(".cloud-cover");
+    displayInfo(domCurrentCloudCover, currentCloudCover);
+  
+    // UV Index
+    const currentUVIndex = currentConditions.uvindex;
+    const domCurrentUVIndex = document.querySelector(".uv-index");
+    displayInfo(domCurrentUVIndex, currentUVIndex);
+  
+    // Upcoming Weather
+    weatherSoon(cityJSON);
+  } catch (error) {
+    alertMsg.textContent = "Could not find city, try again.";
+    console.log(error);
+  }
+}
+
+
+searchCityForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const searchCityInput = document.getElementById("search");
   const city = searchCityInput.value;
-
-  const citySearch = await fetch(apiURL + city + myKey);
-  const cityJSON = await citySearch.json();
-  console.log(cityJSON);
-
-  // Current Conditions
-  const currentConditions = cityJSON.currentConditions;
-  console.log(currentConditions);
-
-  // Time Info
-  const cityTime = currentConditions.datetime.slice(0, this.length - 3);
-  const domCityTime = document.querySelector(".city-time");
-  displayInfo(domCityTime, timeAmPm(cityTime));
-
-  const cityTimeSunrise = currentConditions.sunrise.slice(0, this.length - 3);
-  const domCitySunrise = document.querySelector(".city-time-sunrise");
-  displayInfo(domCitySunrise, timeAmPm(cityTimeSunrise));
-
-  const cityTimeSunset = currentConditions.sunset;
-  const domCitySunset = document.querySelector(".city-time-sunset");
-  displayInfo(domCitySunset, timeAmPm(cityTimeSunset));
-
-  // City Info
-  const cityDetails = cityJSON.resolvedAddress;
-  const cityDetailsArray = cityDetails.split(",").map(str => str.trim());
-  
-  const domCityName = document.querySelector(".city-name");
-  const domStateName = document.querySelector(".state-name");
-  const domCountryName = document.querySelector(".country-name");
-
-  displayInfo(domCityName, cityDetailsArray[0]);
-  displayInfo(domStateName, cityDetailsArray[1]);
-  displayInfo(domCountryName, cityDetailsArray[2]);
-
-  // Temperature Info
-  const tempActual = currentConditions.temp;
-  const domTempActual = document.querySelector(".temp-current");
-  displayInfo(domTempActual, fahrenheitToCelsius(tempActual));
-
-  // Feels Like Temp
-  const tempFeels = currentConditions.feelslike;
-  const domTempFeels = document.querySelector(".temp-feels");
-  displayInfo(domTempFeels, fahrenheitToCelsius(tempFeels));
-  
-  // Temp low
-  const tempLow = cityJSON.days[0].tempmin;
-  const domTempLow = document.querySelector(".temp-low");
-  displayInfo(domTempLow, fahrenheitToCelsius(tempLow));
-
-  // Temp high
-  const tempHigh = cityJSON.days[0].tempmax;
-  const domTempHigh = document.querySelector(".temp-high");
-  displayInfo(domTempHigh, fahrenheitToCelsius(tempHigh));
-
-  // Day & Week Outlook
-  const outlookDay = cityJSON.days[0].description;
-  const domOutlookDay = document.querySelector(".day-outlook");
-  displayInfo(domOutlookDay, outlookDay);
-
-  const outlookWeek = cityJSON.description;
-  const domOutlookWeek = document.querySelector(".week-outlook");
-  displayInfo(domOutlookWeek, outlookWeek);
-
-  // Current Weather Conditions
-  const currentWeather = currentConditions.conditions;
-  const domCurrentWeather = document.querySelector(".conditions");
-  displayInfo(domCurrentWeather, currentWeather);
-
-  // Change Div Background Depending on Current Weather
-  const domWeatherContainer = document.getElementById("weather-current");
-  backgroundChanger(currentWeather, domWeatherContainer);
-
-  // Precipitation
-  const currentPrecipitation = currentConditions.precip;
-  const currentPrecipitationProb = currentConditions.precipprob
-  const domCurrentPrecipitation = document.querySelector(".precipitation");
-  displayInfo(domCurrentPrecipitation, `${currentPrecipitation} (${currentPrecipitationProb}%)`)
-
-  // Humidity
-  const currentHumidity = currentConditions.humidity;
-  const domCurrentHumidity = document.querySelector(".humidity");
-  displayInfo(domCurrentHumidity, currentHumidity);
-
-  // Wind Speed
-  const currentWindSpeed = currentConditions.windspeed;
-  const domCurrentWindSpeed = document.querySelector(".wind-speed");
-  displayInfo(domCurrentWindSpeed, mphToKph(currentWindSpeed));
-
-  // Wind Direction
-  const currentWindDir = currentConditions.winddir;
-  const domCurrentWindDir = document.querySelector(".wind-dir");
-  displayInfo(domCurrentWindDir, compassDirection(currentWindDir));
-
-  // Visibility
-  const currentVisibility = currentConditions.visibility;
-  const domCurrentVisibility = document.querySelector(".visibility");
-  displayInfo(domCurrentVisibility, currentVisibility);
-
-  // Cloud Cover
-  const currentCloudCover = currentConditions.cloudcover;
-  const domCurrentCloudCover = document.querySelector(".cloud-cover");
-  displayInfo(domCurrentCloudCover, currentCloudCover);
-
-  // UV Index
-  const currentUVIndex = currentConditions.uvindex;
-  const domCurrentUVIndex = document.querySelector(".uv-index");
-  displayInfo(domCurrentUVIndex, currentUVIndex);
-
-  // Upcoming Weather
-  weatherSoon(cityJSON);
+  searchController(city);
 })
 
 /**Conditions to Grab
