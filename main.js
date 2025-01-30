@@ -12,10 +12,6 @@ const timeAmPm = (time) => {
   let hour = parseInt(time.split(":")[0]);
   let minute = time.split(":")[1];
 
-  console.log("timeAmPm function")
-  console.log(hour);
-  console.log(minute);
-
   if (hour === 0) {
     hour = 12;
     return `${hour}:${minute}AM`;
@@ -54,51 +50,27 @@ const compassDirection = (degree) => {
     return `${degree} - Southwest`;
   } else if (degree >= 247.6 && degree <= 292.5) {
     return `${degree} - West`;
-  } else if (degress >= 292.6 && degree <= 337.5) {
+  } else if (degree >= 292.6 && degree <= 337.5) {
     return `${degree} - Northwest`;
   }
 }
 
-
 const weatherSoon = (city) => {
-  /** Upcoming time pseudocode
-   * // 222 issue: figure out how to go back to zero
-   * use remainder
-   * if (hour > 23) {
-   * day = 1 // next day
-   * hour %= 23;
-   * }
-   */
   let day = 0;
-  console.log(day);
   for (let i = 1; i <= 6; i++) {
     let hour = parseInt(city.currentConditions.datetime.slice(0, 2));
-    // console.log("hour here")
-    // console.log(hour);
     hour += i;
-    // console.log(`hour after plus: ${hour}`);
+
     if (hour > 23) {
       day = 1;
-      // console.log(`check ${day}`);
       hour %= 24;
-      // console.log(`check ${hour}`);
     }
-
-    // console.log(`${hour}:00`);
-    // console.log(timeAmPm(`${hour}:00`))
 
     const upcomingTime = timeAmPm(`${hour}:00`);
     const upcomingTemp = city.days[day].hours[hour].temp;
     const upcomingConditions = city.days[day].hours[hour].conditions;
-    console.log(upcomingTime);
-    console.log(fahrenheitToCelsius(upcomingTemp));
-    console.log(upcomingConditions);
 
-    console.log(day);
-    console.log(hour);
     let domWeatherSoon = document.querySelector(`.weather-soon-${i}`);
-    console.log(domWeatherSoon);
-
     domWeatherSoon.innerHTML = `
     <p>${upcomingTime}</p>
     <p>${fahrenheitToCelsius(upcomingTemp)}</p>
