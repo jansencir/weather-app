@@ -79,6 +79,13 @@ const weatherSoon = (city) => {
   }
 }
 
+const backgroundChanger = (weather, div) => {
+  // 222: Make function that changes the color of the background depending on the weather
+  // Look through API documents to see what weather conditions there are
+  // if the weather contains "this string"
+  // change the "div" background color to this
+}
+
 
 // Controller
 searchCityForm.addEventListener("submit", async (e) => {
