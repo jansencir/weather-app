@@ -30,6 +30,12 @@ const fahrenheitToCelsius = (f) => {
   return `${f}°F/${toCelsius}°C`;
 }
 
+const mphToKph = (mph) => {
+  const toKph = (mph * 1.60934).toFixed(1);
+  return `${mph}mph / ${toKph}kph`;
+}
+
+
 // Controller
 searchCityForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -147,7 +153,8 @@ searchCityForm.addEventListener("submit", async (e) => {
   // Wind Speed
   const currentWindSpeed = currentConditions.windspeed;
   console.log("wind speed: " + currentWindSpeed);
-  // const domCurrentWindSpeed = document.querySelector(".wind-speed");
+  const domCurrentWindSpeed = document.querySelector(".wind-speed");
+  displayInfo(domCurrentWindSpeed, mphToKph(currentWindSpeed));
 
   // Wind Direction
   const currentWindDir = currentConditions.winddir;
