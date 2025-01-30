@@ -180,7 +180,7 @@ searchCityForm.addEventListener("submit", async (e) => {
   const currentWindDir = currentConditions.winddir;
   console.log("wind direction: " + currentWindDir);
   const domCurrentWindDir = document.querySelector(".wind-dir");
-  displayInfo(domCurrentWindDir, currentWindDir);
+  displayInfo(domCurrentWindDir, compassDirection(currentWindDir));
 
   // Visibility
   const currentVisibility = currentConditions.visibility;
