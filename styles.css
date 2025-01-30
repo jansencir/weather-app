@@ -124,6 +124,12 @@ body {
   --off-black: #222222;
   --off-white: #FDFDFD;
 
+  --weather-clear: linear-gradient(#A8DDEF, #FBFBCA);
+  --weather-overcast: linear-gradient(#5B666C, #A3ACB2);
+  --weather-cloudy: linear-gradient(#8ABBF0, #9BA3AB);
+  --weather-rain: linear-gradient(#1B1D83, #8C8B96);
+  --weather-snow: linear-gradient(#E5DAFF, #ECECEC);
+
   --spacing-city-outer: 6%;
   --spacing-city-inner: 2%;
 }
@@ -227,7 +233,7 @@ input {
 
 #weather-current {
   height: 360px;
-  background: linear-gradient(#a8ddef, #fbfbca);
+  background: var(--weather-clear);
 }
 
 .day-outlook {
@@ -260,7 +266,8 @@ input {
 
 #weather-soon div {
   outline: 1px solid red;
-  background: linear-gradient(#a8ddef, #fbfbca);
+  /* background: linear-gradient(#a8ddef, #fbfbca); */
+  background: var(--weather-clear);
 
   display: flex;
   flex-direction: column;
