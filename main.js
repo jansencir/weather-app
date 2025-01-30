@@ -126,18 +126,28 @@ searchCityForm.addEventListener("submit", async (e) => {
 
 
   // Current Weather Conditions
+  const currentWeather = currentConditions.conditions;
+  // console.log("conditions: " + currentWeather);
+  const domCurrentWeather = document.querySelector(".conditions");
+  displayInfo(domCurrentWeather, currentWeather);
+
   // Precipitation
   const currentPrecipitation = currentConditions.precip;
   const currentPrecipitationProb = currentConditions.precipprob
   console.log("precipitation: " + currentPrecipitation + ` (${currentPrecipitationProb}%)`);
+  const domCurrentPrecipitation = document.querySelector(".precipitation");
+  displayInfo(domCurrentPrecipitation, `${currentPrecipitation} (${currentPrecipitationProb}%)`)
 
   // Humidity
   const currentHumidity = currentConditions.humidity;
   console.log("humidity: " + currentHumidity);
+  const domCurrentHumidity = document.querySelector(".humidity");
+  displayInfo(domCurrentHumidity, currentHumidity);
 
   // Wind Speed
   const currentWindSpeed = currentConditions.windspeed;
   console.log("wind speed: " + currentWindSpeed);
+  // const domCurrentWindSpeed = document.querySelector(".wind-speed");
 
   // Wind Direction
   const currentWindDir = currentConditions.winddir;
