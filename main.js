@@ -55,6 +55,17 @@ const compassDirection = (degree) => {
   }
 }
 
+const weatherSoon = () => {
+  /** Upcoming time pseudocode
+   * while (i = 0; i < 6; i++) do this:
+   * take days[0]
+   * take current hour, add one each time
+   * if the current hour is greater (>) than 23
+   * go to days[1], change current hour to 00
+   */
+
+}
+
 
 // Controller
 searchCityForm.addEventListener("submit", async (e) => {
