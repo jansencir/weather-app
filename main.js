@@ -1,7 +1,5 @@
 // Grab User Input
 const searchCityForm = document.getElementById("search-city-form");
-const apiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
-const myKey = "?key=28AP59HQHVPSMRZYL9C4AZKVB";
 
 // Functions
 const displayInfo = (domEl , newText) => {
@@ -102,11 +100,16 @@ const weatherSoon = (city) => {
 const searchController = async (city) => {
   const alertMsg = document.querySelector(".alert-message")
   try {
-    alertMsg.textContent = "";
+    const apiURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
+    const myKey = "?key=28AP59HQHVPSMRZYL9C4AZKVB";
+
+    alertMsg.textContent = "Fetching...";
 
     const citySearch = await fetch(apiURL + city + myKey);
     const cityJSON = await citySearch.json();
     console.log(cityJSON);
+
+    alertMsg.textContent = "";
   
     // Current Conditions
     const currentConditions = cityJSON.currentConditions;
