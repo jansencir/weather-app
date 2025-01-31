@@ -229,30 +229,3 @@ searchCityForm.addEventListener("submit", (e) => {
   const city = searchCityInput.value;
   searchController(city);
 })
-
-/**Conditions to Grab
- * Conditions
- * Precipitation
- * Humidity
- * Wind Speed
- * Wind Direction
- * Visibility
- * Cloud Cover
- * UV Index
-*/
-
-
-/**Pseudocode
- * Grab user input
- *  Check if the city exists
- *    If city exists, grab info
- *    If city doesn't, notify user
- * Fetch city from VC API
- *  Turn into a JS object
- *  Start grabbing info you want
- *  Display the info you want in the specific area
- * ADD FUNCTION TO CATCH ERRORS AND NOTIFY USER
- * Color changing weather
- *  Take each general weather condition
- *  Set color depending on that weather condition
- */
